@@ -9,6 +9,13 @@
             <conv:NegateBooleanConverter x:Key="inverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Entry HorizontalOptions="FillAndExpand" Text="{Binding DescriptionText}"></Entry>
+            <Button Text="Add" HorizontalOptions="End" CornerRadius="25" Command="{Binding AddCommand}"></Button>
+        </StackLayout>
+    </NavigationPage.TitleView>
     
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>

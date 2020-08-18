@@ -5,7 +5,11 @@
              x:Class="TodoApp.App">
   <Application.Resources>
 
-    <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White"></Setter>
+            </Style>
+        </ResourceDictionary>
 
   </Application.Resources>
 </prism:PrismApplication>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using TodoApp.Models;
 
 namespace TodoApp.ViewModels
@@ -18,31 +19,31 @@ namespace TodoApp.ViewModels
         public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService, pageDialogService)
         {
-            Title = "Main Page";
+            Title = "ToDo List";
 
-            Todos = new ObservableCollection<Todo>
+            Todos = new ObservableCollection<Todo>();
+            AddCommand = new DelegateCommand(() =>
             {
-                new Todo()
+                Todos.Add(new Todo()
                 {
                     Complete = false,
-                    Description = "todo 01"
-                },
-                new Todo()
-                {
-                    Complete = true,
-                    Description = "todo 02"
-                },
-                new Todo()
-                {
-                    Complete = false,
-                    Description = "todo com nome longo 3"
-                },
-                new Todo()
-                {
-                    Complete = false,
-                    Description = "todo 04"
-                },
-            };
+                    Description = DescriptionText
+                });
+
+                DescriptionText = string.Empty;
+            });
+
         }
+
+        public ICommand AddCommand { get; }
+
+        private string _descriptionText;
+
+        public string DescriptionText
+        {
+            get { return _descriptionText; }
+            set { SetProperty(ref _descriptionText, value); }
+        }
+
     }
 }
