@@ -19,21 +19,17 @@
     
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
-        <ListView ItemsSource="{Binding Todos}">
-            <ListView.ItemTemplate>
+        <CollectionView ItemsSource="{Binding Todos}">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding Complete, Mode=TwoWay}"></CheckBox>
-                                <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" TextDecorations="Strikethrough" IsVisible="{Binding Complete}"></Label>
-                                <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" IsVisible="{Binding Complete, Converter={StaticResource inverter}}"></Label>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Complete, Mode=TwoWay}"></CheckBox>
+                        <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" TextDecorations="Strikethrough" IsVisible="{Binding Complete}"></Label>
+                        <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" IsVisible="{Binding Complete, Converter={StaticResource inverter}}"></Label>
+                    </StackLayout>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </StackLayout>
 
 </ContentPage>
