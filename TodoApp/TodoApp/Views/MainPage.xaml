@@ -11,7 +11,7 @@
     </ContentPage.Resources>
 
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" Padding="0,5,10,5">
             <Entry HorizontalOptions="FillAndExpand" Text="{Binding DescriptionText}"></Entry>
             <Button Text="Add" HorizontalOptions="End" CornerRadius="25" Command="{Binding AddCommand}"></Button>
         </StackLayout>
