@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:conv="clr-namespace:TodoApp.Converter"
-             x:Class="TodoApp.Views.MainPage"
-             Title="{Binding Title}">
+<ContentPage
+    x:Class="TodoApp.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:TodoApp.Converter"
+    Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <conv:NegateBooleanConverter x:Key="inverter" />
@@ -11,21 +12,34 @@
     </ContentPage.Resources>
 
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal" Padding="0,5,10,5">
-            <Entry HorizontalOptions="FillAndExpand" Text="{Binding DescriptionText}"></Entry>
-            <Button Text="Add" HorizontalOptions="End" CornerRadius="25" Command="{Binding AddCommand}"></Button>
+        <StackLayout Padding="0,5,10,5" Orientation="Horizontal">
+            <Entry HorizontalOptions="FillAndExpand" Text="{Binding DescriptionText}" />
+            <Button
+                Command="{Binding AddCommand}"
+                CornerRadius="25"
+                HorizontalOptions="End"
+                Text="Add" />
         </StackLayout>
     </NavigationPage.TitleView>
-    
+
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"></ActivityIndicator>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
         <CollectionView ItemsSource="{Binding Todos}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Complete, Mode=TwoWay}"></CheckBox>
-                        <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" TextDecorations="Strikethrough" IsVisible="{Binding Complete}"></Label>
-                        <Label Text="{Binding Description}" VerticalOptions="Center" FontSize="Body" IsVisible="{Binding Complete, Converter={StaticResource inverter}}"></Label>
+                        <CheckBox IsChecked="{Binding Complete, Mode=TwoWay}" />
+                        <Label
+                            FontSize="Body"
+                            IsVisible="{Binding Complete}"
+                            Text="{Binding Description}"
+                            TextDecorations="Strikethrough"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontSize="Body"
+                            IsVisible="{Binding Complete, Converter={StaticResource inverter}}"
+                            Text="{Binding Description}"
+                            VerticalOptions="Center" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

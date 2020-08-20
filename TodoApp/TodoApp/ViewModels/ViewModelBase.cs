@@ -28,9 +28,7 @@ namespace TodoApp.ViewModels
         public bool IsBusy
         {
             get => _isBusy;
-            set {
-                if (SetProperty(ref _isBusy, value)) ;
-            }
+            set => SetProperty(ref _isBusy, value);
         }
 
         private bool _isActive;
